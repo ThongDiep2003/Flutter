@@ -1,31 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
-import 'login_page.dart';
-import 'home_page.dart';
-import 'forgot_password_page.dart';
-import 'register_page.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
+
+import 'screens/admin/admin_home_screen.dart';
+import 'screens/admin/analytics_screen.dart';
+import 'screens/admin/user_manage_screen.dart';
+import 'screens/admin/demo_homee_screen.dart';
+import 'screens/auth/login_screen.dart';
+import 'screens/auth/signup_screen.dart';
+import 'screens/auth/forgot_passwood_screen.dart';
+import 'screens/introduce/introduce_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+
+  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+
+  runApp(MyApp(analytics: analytics));
 }
 
 class MyApp extends StatelessWidget {
+  final FirebaseAnalytics analytics;
+
+  MyApp({required this.analytics});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Firebase App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: '/',
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/introduce',
+      navigatorObservers: [
+        FirebaseAnalyticsObserver(analytics: analytics),
+      ],
       routes: {
-        '/': (context) => LoginPage(),
-        '/home': (context) => HomePage(),
-        '/register': (context) => RegisterPage(),
-        '/forgot_password': (context) => ForgotPasswordPage(),
+        '/introduce': (context) => IntroduceScreen(),
+        '/login': (context) => LoginScreen(),
+        '/signup': (context) => SignupScreen(),
+        '/forgot-password': (context) => ForgotPasswordScreen(),
+        '/admin-home': (context) => AdminHomeScreen(),
+        '/analytics': (context) => AnalyticsScreen(analytics: analytics), 
+        '/user-management': (context) => UserManageScreen(),
+        '/demo-home': (context) => DemoHomeScreen(),
       },
     );
   }
