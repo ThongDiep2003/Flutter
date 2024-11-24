@@ -66,6 +66,29 @@ class _UserManageScreenState extends State<UserManageScreen> {
     });
   }
 
+  Future<void> _confirmDeleteUser(String userId) async {
+    final shouldDelete = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Confirm Deletion'),
+        content: Text('Are you sure you want to delete this user?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false), // Cancel action
+            child: Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true), // Confirm action
+            child: Text('Delete', style: TextStyle(color: Colors.red)),
+          ),
+        ],
+      ),
+    );
+    if (shouldDelete == true) {
+      _deleteUser(userId);
+    }
+  }
+
   void _deleteUser(String userId) {
     _dbRef.child(userId).remove();
     setState(() {
@@ -173,7 +196,7 @@ class _UserManageScreenState extends State<UserManageScreen> {
                             ),
                             trailing: IconButton(
                               icon: Icon(Icons.delete_outline, color: Colors.red),
-                              onPressed: () => _deleteUser(user['id']),
+                              onPressed: () => _confirmDeleteUser(user['id']),
                             ),
                           ),
                         );
