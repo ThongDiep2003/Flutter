@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -76,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen>
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // App Logo or Title
-                Text(
+                const Text(
                   "Welcome Back!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -85,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen>
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   "Login to continue",
                   textAlign: TextAlign.center,
@@ -94,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen>
                     color: Colors.grey.shade600,
                   ),
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
 
                 // Email Input
                 TextField(
@@ -102,13 +104,13 @@ class _LoginScreenState extends State<LoginScreen>
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelText: 'Email',
-                    prefixIcon: Icon(Icons.email_outlined),
+                    prefixIcon: const Icon(Icons.email_outlined),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Password Input
                 TextField(
@@ -116,55 +118,55 @@ class _LoginScreenState extends State<LoginScreen>
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',
-                    prefixIcon: Icon(Icons.lock_outline),
+                    prefixIcon: const Icon(Icons.lock_outline),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Login Button
                 _isLoading
-                    ? Center(child: CircularProgressIndicator())
+                    ? const Center(child: CircularProgressIndicator())
                     : ElevatedButton(
                         onPressed: _login,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.black,
-                          padding: EdgeInsets.symmetric(vertical: 16),
+                          padding: const EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           "Login",
                           style: TextStyle(fontSize: 18, color: Colors.white),
                         ),
                       ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 // Forgot Password Button
                 TextButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/forgot-password');
                   },
-                  child: Text(
+                  child: const Text(
                     "Forgot Password?",
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 // Sign Up Button
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don't have an account? "),
+                    const Text("Don't have an account? "),
                     TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/signup');
                       },
-                      child: Text(
+                      child: const Text(
                         "Sign Up",
                         style: TextStyle(color: Colors.black),
                       ),

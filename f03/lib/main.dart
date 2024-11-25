@@ -24,7 +24,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   final FirebaseAnalytics analytics;
 
-  MyApp({required this.analytics});
+  const MyApp({super.key, required this.analytics});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         FirebaseAnalyticsObserver(analytics: analytics),
       ],
       routes: {
-        '/introduce': (context) => IntroduceScreen(),
+        '/introduce': (context) => const IntroduceScreen(),
         '/login': (context) => LoginScreen(),
         '/signup': (context) => SignupScreen(),
         '/forgot-password': (context) => ForgotPasswordScreen(),

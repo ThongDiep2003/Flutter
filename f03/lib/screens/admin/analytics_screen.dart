@@ -6,7 +6,7 @@ import 'package:fl_chart/fl_chart.dart';
 class AnalyticsScreen extends StatefulWidget {
   final FirebaseAnalytics analytics;
 
-  AnalyticsScreen({required this.analytics});
+  const AnalyticsScreen({super.key, required this.analytics});
 
   @override
   _AnalyticsScreenState createState() => _AnalyticsScreenState();
@@ -55,8 +55,8 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text(
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: const Text(
           'Analytics Dashboard',
           style: TextStyle(
             color: Colors.black,
@@ -69,7 +69,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Users Registered Per Month',
               style: TextStyle(
                 fontSize: 20,
@@ -77,8 +77,8 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 16),
-            Container(
+            const SizedBox(height: 16),
+            SizedBox(
               height: 200, // Kích thước nhỏ hơn cho biểu đồ
               child: BarChart(
                 BarChartData(
@@ -92,7 +92,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                         interval: 1,
                         getTitlesWidget: (value, meta) => Text(
                           value.toInt().toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.grey,
                             fontSize: 10,
                           ),
@@ -111,7 +111,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                             padding: const EdgeInsets.only(top: 4.0),
                             child: Text(
                               months[value.toInt() % 12],
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.grey,
                                 fontSize: 10,
                               ),
@@ -122,7 +122,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                       ),
                     ),
                   ),
-                  gridData: FlGridData(show: false),
+                  gridData: const FlGridData(show: false),
                   borderData: FlBorderData(show: false),
                   barGroups: _userCountsPerMonth
                       .asMap()
@@ -142,10 +142,10 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               'Total Users: ${_userCountsPerMonth.reduce((a, b) => a + b)}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
                 color: Colors.black,

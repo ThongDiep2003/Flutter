@@ -3,6 +3,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:intl/intl.dart';
 
 class UserManageScreen extends StatefulWidget {
+  const UserManageScreen({super.key});
+
   @override
   _UserManageScreenState createState() => _UserManageScreenState();
 }
@@ -70,16 +72,16 @@ class _UserManageScreenState extends State<UserManageScreen> {
     final shouldDelete = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Confirm Deletion'),
-        content: Text('Are you sure you want to delete this user?'),
+        title: const Text('Confirm Deletion'),
+        content: const Text('Are you sure you want to delete this user?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false), // Cancel action
-            child: Text('Cancel'),
+            child: const Text('Cancel'),
           ),
           TextButton(
             onPressed: () => Navigator.of(context).pop(true), // Confirm action
-            child: Text('Delete', style: TextStyle(color: Colors.red)),
+            child: const Text('Delete', style: TextStyle(color: Colors.red)),
           ),
         ],
       ),
@@ -96,7 +98,7 @@ class _UserManageScreenState extends State<UserManageScreen> {
       _users.removeWhere((user) => user['id'] == userId);
     });
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('User deleted successfully')),
+      const SnackBar(content: Text('User deleted successfully')),
     );
   }
 
@@ -107,8 +109,8 @@ class _UserManageScreenState extends State<UserManageScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text(
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: const Text(
           'User Management',
           style: TextStyle(
             color: Colors.black,
@@ -117,7 +119,7 @@ class _UserManageScreenState extends State<UserManageScreen> {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.calendar_today_outlined, color: Colors.black),
+            icon: const Icon(Icons.calendar_today_outlined, color: Colors.black),
             onPressed: () async {
               DateTime? selectedDate = await showDatePicker(
                 context: context,
@@ -148,11 +150,11 @@ class _UserManageScreenState extends State<UserManageScreen> {
                   hintText: 'Search by email',
                   border: InputBorder.none,
                   prefixIcon: Icon(Icons.search, color: Colors.grey.shade600),
-                  contentPadding: EdgeInsets.symmetric(vertical: 10),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 10),
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // User List
             Expanded(
               child: _filteredUsers.isEmpty
@@ -179,11 +181,11 @@ class _UserManageScreenState extends State<UserManageScreen> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: ListTile(
-                            contentPadding: EdgeInsets.symmetric(
+                            contentPadding: const EdgeInsets.symmetric(
                                 horizontal: 16, vertical: 8),
                             title: Text(
                               user['email'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
                               ),
@@ -195,7 +197,7 @@ class _UserManageScreenState extends State<UserManageScreen> {
                               ),
                             ),
                             trailing: IconButton(
-                              icon: Icon(Icons.delete_outline, color: Colors.red),
+                              icon: const Icon(Icons.delete_outline, color: Colors.red),
                               onPressed: () => _confirmDeleteUser(user['id']),
                             ),
                           ),

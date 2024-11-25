@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
+
   @override
   _SignupScreenState createState() => _SignupScreenState();
 }
@@ -51,7 +53,7 @@ class _SignupScreenState extends State<SignupScreen>
     if (_passwordController.text.trim() !=
         _confirmPasswordController.text.trim()) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Passwords do not match!')),
+        const SnackBar(content: Text('Passwords do not match!')),
       );
       return;
     }
@@ -69,7 +71,7 @@ class _SignupScreenState extends State<SignupScreen>
 
       // Navigate to login screen after successful signup
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Signup successful! Please log in.')),
+        const SnackBar(content: Text('Signup successful! Please log in.')),
       );
       Navigator.pushReplacementNamed(context, '/login');
     } catch (e) {
@@ -98,7 +100,7 @@ class _SignupScreenState extends State<SignupScreen>
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // Title
-                Text(
+                const Text(
                   "Create Account",
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -107,7 +109,7 @@ class _SignupScreenState extends State<SignupScreen>
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   "Sign up to get started",
                   textAlign: TextAlign.center,
@@ -116,7 +118,7 @@ class _SignupScreenState extends State<SignupScreen>
                     color: Colors.grey.shade600,
                   ),
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
 
                 // Email Input
                 TextField(
@@ -124,13 +126,13 @@ class _SignupScreenState extends State<SignupScreen>
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelText: 'Email',
-                    prefixIcon: Icon(Icons.email_outlined),
+                    prefixIcon: const Icon(Icons.email_outlined),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Password Input
                 TextField(
@@ -138,13 +140,13 @@ class _SignupScreenState extends State<SignupScreen>
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',
-                    prefixIcon: Icon(Icons.lock_outline),
+                    prefixIcon: const Icon(Icons.lock_outline),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Confirm Password Input
                 TextField(
@@ -152,43 +154,43 @@ class _SignupScreenState extends State<SignupScreen>
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Confirm Password',
-                    prefixIcon: Icon(Icons.lock_outline),
+                    prefixIcon: const Icon(Icons.lock_outline),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Signup Button
                 _isLoading
-                    ? Center(child: CircularProgressIndicator())
+                    ? const Center(child: CircularProgressIndicator())
                     : ElevatedButton(
                         onPressed: _signup,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.black,
-                          padding: EdgeInsets.symmetric(vertical: 16),
+                          padding: const EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           "Sign Up",
                           style: TextStyle(fontSize: 18, color: Colors.white),
                         ),
                       ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 // Already have an account
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Already have an account? "),
+                    const Text("Already have an account? "),
                     TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/login');
                       },
-                      child: Text(
+                      child: const Text(
                         "Log In",
                         style: TextStyle(color: Colors.black),
                       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AdminHomeScreen extends StatelessWidget {
+  const AdminHomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -8,7 +10,7 @@ class AdminHomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text(
+        title: const Text(
           'Admin Dashboard',
           style: TextStyle(
             color: Colors.black,
@@ -17,7 +19,7 @@ class AdminHomeScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -26,7 +28,7 @@ class AdminHomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Title
-            Text(
+            const Text(
               'Welcome Admin!',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -35,7 +37,7 @@ class AdminHomeScreen extends StatelessWidget {
                 color: Colors.black87,
               ),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
 
             // Button to navigate to Analytics Screen
             ElevatedButton(
@@ -45,12 +47,12 @@ class AdminHomeScreen extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blueGrey[800], // Muted chromatic color
                 foregroundColor: Colors.white, // Text/Icon color
-                padding: EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.analytics),
@@ -62,7 +64,7 @@ class AdminHomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Button to navigate to User Management Screen
             ElevatedButton(
@@ -72,12 +74,12 @@ class AdminHomeScreen extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blueGrey[800], // Muted chromatic color
                 foregroundColor: Colors.white, // Text/Icon color
-                padding: EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.group),
